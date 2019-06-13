@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-function doIncrement() {
+function increment() {
   return { type: 'INCREMENT'}
 }
 
-function doDecrement() {
+function decrement() {
   return { type: 'DECREMENT'}
 }
 
@@ -37,8 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrement: () => dispatch(doIncrement()),
-    onDecrement: () => dispatch(doDecrement())
+    onIncrement: () => dispatch(increment()),
+    onDecrement: () => dispatch(decrement())
   }
 };
 

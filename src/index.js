@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
+const logger = store => next => action => {
+  console.log('Count action!', action);
+  next(action);
+};
+const middleware = applyMiddleware(logger);
 
 const initialState = {
   value: 0
 };
-
 
 function counter(state = initialState, action) {
   switch(action.type) {
@@ -29,7 +33,11 @@ const rootReducer = combineReducers({
   counter
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, middleware);
+
+store.subscribe(() => {
+  console.log('State changed!', store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>
