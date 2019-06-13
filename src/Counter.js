@@ -26,7 +26,7 @@ class Counter extends Component {
     return (
       <div>
         <button onClick={this.increment}>+</button>
-          <span>{this.props.count}</span>
+          <input type='button' value={this.props.count} />
         <button onClick={this.decrement}>-</button>
       </div>
     );
