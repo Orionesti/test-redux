@@ -11,11 +11,11 @@ function doDecrement() {
 
 class Counter extends Component {
   increment = () => {
-    this.props.doIncrement();
+    this.props.onIncrement();
   };
 
   decrement = () => {
-    this.props.doDecrement();
+    this.props.onDecrement();
   };
 
   render() {
@@ -37,8 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    increment: () => dispatch(doIncrement()),
-    decrement: () => dispatch(doDecrement())
+    onIncrement: () => dispatch(doIncrement()),
+    onDecrement: () => dispatch(doDecrement())
   }
 };
 
