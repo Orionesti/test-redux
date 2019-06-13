@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 const logger = store => next => action => {
   console.log('Count action!', action);
   next(action);
 };
-const middleware = applyMiddleware(logger);
+const middleware = composeWithDevTools(applyMiddleware(logger, thunk));
 
 const initialState = {
   value: 0

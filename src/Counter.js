@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-function increment() {
-  return { type: 'INCREMENT'}
+const increment = () => dispatch => {
+  setTimeout(() => {
+    dispatch({ type: 'INCREMENT'})
+  }, 1000)
 }
 
-function decrement() {
-  return { type: 'DECREMENT'}
+const decrement = () => dispatch => {
+  setTimeout(() => {
+    dispatch({ type: 'DECREMENT'})
+  }, 1000)
 }
 
 class Counter extends Component {
