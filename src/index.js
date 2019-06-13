@@ -3,22 +3,33 @@ import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { combineReducers } from 'redux';
 
 const initialState = {
-  count: 0
+  value: 0
 };
 
-function reducer(state = initialState, action) {
+
+function counter(state = initialState, action) {
   switch(action.type) {
     case "INCREMENT":
       return {
-        count: state.count + 1
+        value: state.value + 1
+      };
+    case "DECREMENT":
+      return {
+        value: state.value - 1
       };
     default:
       return state;
   }
 }
-const store = createStore(reducer);
+
+const rootReducer = combineReducers({
+  counter
+});
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
